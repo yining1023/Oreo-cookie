@@ -1,0 +1,108 @@
+void setup() {
+  size(640, 360);
+  background(153, 102, 255);
+}
+
+//draw a circle of ellipse
+void Drawellipse() {
+  strokeWeight(1);
+  stroke(0);
+  fill(0);
+  translate(320, 180);
+  for (int i = 0; i < 36; i = i+1) {
+    // float x=160*cos(i*PI/18);
+    // float y=160*sin(i*PI/18);
+    //ellipse(x,y,25,10);
+    float b=255*(i+1)/36;
+    noStroke();
+    fill(255, 255, b);
+    ellipse(160, 0, 30, 15);
+    rotate(PI/18);
+  }
+}
+
+//draw a circle of line+poit
+void Drawline() {
+  stroke(0);
+  noFill();
+  strokeWeight(6);
+  float a=PI/8;
+  float x=132.5*cos(3*PI/16);
+  float y=132.5*sin(3*PI/16);
+  for (int j = 0; j < 8; j = j+1) {
+    float c=255*(j+1)/8;
+    stroke(255, 255, c);
+    arc(0, 0, 265, 265, 0, a);
+    point(x, y);
+    rotate(PI/4);
+  }
+}
+
+//draw a smaller circle of line+poit
+void Drawsmallline() {
+  noFill();
+  strokeWeight(6);
+  //float a=PI/8;
+  float x=70*cos(3*PI/16);
+  float y=70*sin(3*PI/16);
+  for (int j = 0; j < 8; j = j+1) {
+    //arc(0,0,140,140,0,a);
+    float c=255*(j+1)/8;
+    stroke(255, 255, c);
+    point(x, y);
+    rotate(PI/4);
+  }
+}
+
+
+//draw four triangles and a point
+void Draw4triagle() {
+  translate(100, 0);
+  for (int k = 0; k < 4; k = k+1) {
+    float d=255*(k+1)/4;
+    stroke(255, 255, 255/4);
+    strokeWeight(4);
+    point(0, 0);
+    strokeWeight(1);
+    noStroke();
+    fill(255, 255, d);
+    triangle(25, 4, 4, 4, 4, 25);
+    rotate(PI/2);
+  }
+}
+
+void Drawcircletriangle() {
+  for (int m = 0; m < 8; m = m+1) {
+    Draw4triagle();
+    translate(-100, 0);
+    rotate(PI/4);
+  }
+}
+
+void Drawface() {
+  stroke(255, 255, 255/4);
+  strokeWeight(3);
+  ellipse(0, 0, 120, 100);
+
+  strokeWeight(2);
+  noStroke();
+  fill(255, 255, 255/4);
+  ellipse(-30, -10, 10, 20);
+  ellipse(30, -10, 10, 20);
+
+  fill(255);
+  ellipse(-27, -10, 5, 10);
+  ellipse(33, -10, 5, 10);
+
+  stroke(255, 255, 255/4);
+  noFill();
+  arc(0, 20, 50, 30, 0, PI);
+}
+
+void draw() {
+  Drawellipse();
+  Drawline();
+  Drawcircletriangle();
+  Drawsmallline();
+  Drawface();
+}
